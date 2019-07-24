@@ -70,7 +70,7 @@ namespace ICSharpCode.Decompiler.IL.ControlFlow
 		/// <remarks>Set in AnalyzeCurrentProperty()</remarks>
 		IField currentField;
 
-		/// <summary>The disposing field of the compiler-generated enumerator class./summary>
+		/// <summary>The disposing field of the compiler-generated enumerator class.</summary>
 		/// <remarks>Set in ConstructExceptionTable() for assembly compiled with Mono</remarks>
 		IField disposingField;
 
@@ -390,7 +390,7 @@ namespace ICSharpCode.Decompiler.IL.ControlFlow
 				methodTypeParameters: null);
 			var body = context.TypeSystem.MainModule.PEFile.Reader.GetMethodBody(methodDef.RelativeVirtualAddress);
 			var il = context.CreateILReader()
-				.ReadIL(method, body, genericContext, context.CancellationToken);
+				.ReadIL(method, body, genericContext, ILFunctionKind.TopLevelFunction, context.CancellationToken);
 			il.RunTransforms(CSharpDecompiler.EarlyILTransforms(true),
 				new ILTransformContext(il, context.TypeSystem, context.DebugInfo, context.Settings) {
 					CancellationToken = context.CancellationToken,
